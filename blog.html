@@ -43,7 +43,13 @@
     <article>
         <h1 class="post-title">$GENERETO['title']</h1>
         <p class="post-meta">Published on $GENERETO['publish_date'] | Last update: $GENERETO['last_modified_date'] | $GENERETO['read_time_minutes'] min read</p>
-        $GENERETO['table_of_contents']
+        <details class="toc-container" open="">
+            <summary>Table of Contents</summary>
+            <div class="toc">
+
+                $GENERETO['table_of_contents']
+            </div>
+        </details>
         <!-- start_content -->
         <small>This will be hidden in the final output.</small>
         <h1>Hello world!</h1>
