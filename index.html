@@ -29,10 +29,22 @@
     <meta property="twitter:description"
           content="$GENERETO['description']">
     <meta property="twitter:image" content="$GENERETO['cover_image']">
+
+    <style>
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+
 </head>
 <body>
 <div class="navbar">
     <h1 class="navbar-title">Welcome!</h1>
+    <canvas id="matrix"></canvas>
     <div class="navbar-links">
         <a href="https://fponzi.me/">Home</a>
         <a href="https://blog.fponzi.me/">Blog</a>
@@ -52,5 +64,76 @@
     <p>
     <p>This website was generated with <a href="https://github.com/FedericoPonzi/genereto">Genereto</a>.</p>
 </footer>
+
+<script>
+    const rainDuration = 6000; // ms the rain lasts
+    const katakana = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    let width, height, columns, drops, rainTimer;
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      columns = Math.floor(width / 20);
+      drops = new Array(columns).fill(0);
+    }
+
+    function drawFrame() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = '#0F0';
+      ctx.font = '16px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = katakana[Math.floor(Math.random() * katakana.length)];
+        ctx.fillText(text, i * 20, drops[i] * 20);
+
+        if (drops[i] * 20 > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    function startRain() {
+      if (rainTimer) return; // prevent multiple runs
+      initCanvas();
+      const interval = setInterval(drawFrame, 50);
+
+      rainTimer = setTimeout(() => {
+        clearInterval(interval);
+        ctx.clearRect(0, 0, width, height);
+        rainTimer = null;
+      }, rainDuration);
+    }
+
+    // Key press trigger
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'm') startRain();
+    });
+
+    // Triple tap trigger
+    let lastTap = 0, tapCount = 0;
+    document.addEventListener('touchend', () => {
+      const now = Date.now();
+      if (now - lastTap < 400) {
+        tapCount++;
+        if (tapCount === 3) {
+          startRain();
+          tapCount = 0;
+        }
+      } else {
+        tapCount = 1;
+      }
+      lastTap = now;
+    });
+
+    window.addEventListener('resize', () => {
+      if (!rainTimer) return;
+      initCanvas();
+    });
+</script>
 </body>
 </html>
