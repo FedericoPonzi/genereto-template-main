@@ -38,6 +38,44 @@
             pointer-events: none;
             z-index: 0;
         }
+        
+        .starwars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+        }
+        
+        .starwars-text {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            color: #ffd700;
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            line-height: 1.6;
+            text-align: center;
+            animation: starwars-scroll 20s linear forwards;
+        }
+        
+        @keyframes starwars-scroll {
+            0% {
+                top: 100%;
+                transform: translateX(-50%) perspective(400px) rotateX(25deg);
+            }
+            100% {
+                top: -100%;
+                transform: translateX(-50%) perspective(400px) rotateX(25deg);
+            }
+        }
     </style>
 
 </head>
@@ -119,9 +157,24 @@
       }
     }
 
+    function startStarWars() {
+      const title = document.querySelector('.navbar-title').textContent;
+      const article = document.querySelector('article').textContent.trim();
+      const overlay = document.createElement('div');
+      overlay.className = 'starwars';
+      overlay.innerHTML = `<div class="starwars-text"><h2>${title}</h2><p>${article}</p></div>`;
+      document.body.appendChild(overlay);
+      overlay.style.display = 'block';
+      
+      setTimeout(() => {
+        overlay.remove();
+      }, 20000);
+    }
+
     // Key press trigger
     document.addEventListener('keydown', (e) => {
       if (e.key.toLowerCase() === 'm') startRain();
+      else if (e.key.toLowerCase() === 's') startStarWars();
       else stopRain();
     });
 
