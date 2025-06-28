@@ -101,6 +101,7 @@
         employers.
     <p>
     <p>This website was generated with <a href="https://github.com/FedericoPonzi/genereto">Genereto</a>.</p>
+    <p><small><span id="extras" style="cursor: pointer; color: #666;">Click me for extras</span></small></p>
 </footer>
 
 <script>
@@ -135,7 +136,7 @@
       }
     }
 
-    let interval;
+    let interval, starWarsOverlay;
     function startRain() {
       if (rainTimer) return; // prevent multiple runs
       initCanvas();
@@ -158,24 +159,41 @@
     }
 
     function startStarWars() {
+      if (starWarsOverlay) return;
       const title = document.querySelector('.navbar-title').textContent;
       const article = document.querySelector('article').textContent.trim();
-      const overlay = document.createElement('div');
-      overlay.className = 'starwars';
-      overlay.innerHTML = `<div class="starwars-text"><h2>${title}</h2><p>${article}</p></div>`;
-      document.body.appendChild(overlay);
-      overlay.style.display = 'block';
+      starWarsOverlay = document.createElement('div');
+      starWarsOverlay.className = 'starwars';
+      starWarsOverlay.innerHTML = `<div class="starwars-text"><h2>${title}</h2><p>${article}</p></div>`;
+      document.body.appendChild(starWarsOverlay);
+      starWarsOverlay.style.display = 'block';
       
       setTimeout(() => {
-        overlay.remove();
+        if (starWarsOverlay) {
+          starWarsOverlay.remove();
+          starWarsOverlay = null;
+        }
       }, 20000);
+    }
+
+    function stopStarWars() {
+      if (starWarsOverlay) {
+        starWarsOverlay.remove();
+        starWarsOverlay = null;
+      }
     }
 
     // Key press trigger
     document.addEventListener('keydown', (e) => {
       if (e.key.toLowerCase() === 'm') startRain();
       else if (e.key.toLowerCase() === 's') startStarWars();
+      else if (e.key === 'Escape') stopStarWars();
       else stopRain();
+    });
+
+    // Extras info
+    document.getElementById('extras').addEventListener('click', () => {
+      alert('Hidden Effects:\n\n• Press "M"/triple tap\n• Press "S" \n• Press ESC or any keys to stop the effects');
     });
 
     // Triple tap trigger
@@ -185,7 +203,7 @@
       if (now - lastTap < 400) {
         tapCount++;
         if (tapCount === 3) {
-          startRain();
+          Math.random() < 0.5 ? startRain() : startStarWars();
           tapCount = 0;
         }
       } else {
@@ -195,7 +213,9 @@
     });
 
     // Stop animation on any tap
-    document.addEventListener('click', stopRain);
+    document.addEventListener('click', (e) => {
+      if (e.target.id !== 'extras') stopRain();
+    });
 
     window.addEventListener('resize', () => {
       if (!rainTimer) return;

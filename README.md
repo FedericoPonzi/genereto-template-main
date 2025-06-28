@@ -3,4 +3,3 @@ My template used across pages hosted on my domain, and an example of genereto te
 prism cdn: https://cdnjs.com/libraries/prism
 * mathjax for latex rendering
 * prism for code highlight
-* 
