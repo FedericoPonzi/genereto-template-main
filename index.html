@@ -203,7 +203,12 @@
       if (now - lastTap < 400) {
         tapCount++;
         if (tapCount === 3) {
-          Math.random() < 0.5 ? startRain() : startStarWars();
+          if (rainTimer || starWarsOverlay) {
+            stopRain();
+            stopStarWars();
+          } else {
+            Math.random() < 0.5 ? startRain() : startStarWars();
+          }
           tapCount = 0;
         }
       } else {
