@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$GENERETO['title']</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="res/styles.css">
     <link rel="stylesheet" href="res/prism.css">
     <meta name="description" content="$GENERETO['description']">
@@ -28,7 +25,7 @@
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']], //allow inline math
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
             },
             svg: {
                 fontCache: 'global'
@@ -46,17 +43,52 @@
     </div>
 </div>
 
-<div class="container">
-    <article>
-        <h1 class="post-title">$GENERETO['title']</h1>
-        <p class="post-meta">Published on $GENERETO['publish_date'] | Last update: $GENERETO['last_modified_date'] | $GENERETO['read_time_minutes'] min read</p>
-        <details class="toc-container" open="">
-            <summary>Table of Contents</summary>
-            <div class="toc">
-
-                $GENERETO['table_of_contents']
+<div class="page-wrapper">
+    <aside class="sidebar">
+        <div class="block">
+            <div class="block-title">Navigation</div>
+            <div class="block-content">
+                <a href="https://fponzi.me">Home</a>
+                <a href="index.html">Blog Index</a>
             </div>
-        </details>
+        </div>
+
+        <div class="block">
+            <div class="block-title">/var</div>
+            <div class="block-content">
+                <a href="https://yes-we-kana.fponzi.me/">yes-we-kana: learn basic Japanese</a>
+                <a href="https://code-vibes.fponzi.me/">code-vibes</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Links</div>
+            <div class="block-content">
+                <a href="https://github.com/FedericoPonzi">GitHub</a>
+                <a href="https://twitter.com/federico_ponzi">Twitter</a>
+                <a href="https://www.linkedin.com/in/federicoponzi/">LinkedIn</a>
+                <a href="https://discuss.systems/@federicoponzi">Mastodon</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">RSS</div>
+            <div class="block-content">
+                <a href="rss.xml">Subscribe to RSS</a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="container">
+        <article>
+            <h1 class="post-title">$GENERETO['title']</h1>
+            <p class="post-meta">Published: $GENERETO['publish_date'] | Updated: $GENERETO['last_modified_date'] | $GENERETO['read_time_minutes'] min read</p>
+            <details class="toc-container" open="">
+                <summary>Table of Contents</summary>
+                <div class="toc">
+                    $GENERETO['table_of_contents']
+                </div>
+            </details>
         <!-- start_content -->
         <small>This will be hidden in the final output.</small>
         <h1>Hello world!</h1>
@@ -117,17 +149,82 @@ struct Opts {
         </ol>
         <p>Some headers can improve the security of your website by directing browser to behave in a certain way. For example, the HTTP <code>Strict-Transport-Security</code> header (HSTS) indicates to the browser to use HTTPS when performing future requests. Another important header is the <code>Content-Security-Policy</code> header which restricts which resources the browser can load for the page, for example, by allowing content to be loaded only from the site's origin.</p>
 
-        <!-- end_content -->
-    </article>
-    <footer><h2>About the author</h2>
-        <img src="res/profile.jpg" class="profile" alt="Federico Ponzi's profile picture">
-        <p>Hello! I'm Federico Ponzi, a Software Engineer at Microsoft. I'm interested in distributed systems and operating systems, and this is my personal blog.</p>
-        <p>If you have questions, comments, feedback or just want to say hi, please reach out: <a href="https://twitter.com/federico_ponzi">Twitter</a>, <a rel="me" href="https://discuss.systems/@federicoponzi">Mastodon</a>, <a href="https://www.linkedin.com/in/federicoponzi/">Linkedin</a>, <a href="https://github.com/FedericoPonzi">GitHub</a>. You can also reach out via email using x@y where x is "me" and y is this domain.</p>
-    </footer>
+            <!-- end_content -->
+        </article>
+        <div style="background: var(--white); padding: 20px; border-top: 2px solid var(--block-border);">
+            <h2>About the author</h2>
+            <img src="res/profile.jpg" class="profile" alt="Federico Ponzi's profile picture">
+            <p>Hello! I'm Federico Ponzi, a Software Engineer at Microsoft. I'm interested in distributed systems and operating systems, and this is my personal blog.</p>
+            <p>If you have questions, comments, feedback or just want to say hi, please reach out: <a href="https://twitter.com/federico_ponzi">Twitter</a>, <a rel="me" href="https://discuss.systems/@federicoponzi">Mastodon</a>, <a href="https://www.linkedin.com/in/federicoponzi/">Linkedin</a>, <a href="https://github.com/FedericoPonzi">GitHub</a>. You can also reach out via email using x@y where x is "me" and y is this domain.</p>
+        </div>
+    </div>
+
+    <aside class="sidebar-right">
+        <div class="block">
+            <div class="block-title">Swag Store</div>
+            <div class="block-content">
+                <a href="https://swag.fponzi.me/">
+                    <img src="https://swag.fponzi.me/assets/rust-failure-is-not-an-option.png"
+                         alt="Rust: Failure is not an Option"
+                         class="swag-image">
+                </a>
+                <a href="https://swag.fponzi.me/" class="swag-link">Check out some swag!</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Badges</div>
+            <div class="block-content">
+                <div class="badge-item">
+                    <a href="https://projecteuler.net/profile/federicoponzi">
+                        <img src="https://projecteuler.net/profile/federicoponzi.png"
+                             alt="Project Euler Profile">
+                    </a>
+                </div>
+                <div class="badge-item">
+                    <a href="https://www.mozilla.org/en-US/firefox/">
+                        <img src="res/badges/fftake.gif"
+                             alt="Firefox - Take back the web">
+                    </a>
+                </div>
+                <div class="badge-item">
+                    <a href="https://www.kernel.org/">
+                        <img src="res/badges/linux-p.gif"
+                             alt="Linux Powered">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Visitors</div>
+            <div class="block-content">
+                <div class="stats-item">
+                    <span class="stats-label">Today:</span>
+                    <span class="stats-value">1,337</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">This Week:</span>
+                    <span class="stats-value">8,675</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">This Month:</span>
+                    <span class="stats-value">42,069</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">Total:</span>
+                    <span class="stats-value">1,234,567</span>
+                </div>
+                <div class="stats-notice">
+                    (this is all fake, I don't track visitors :)
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
 
 <footer class="footer">
-    <p>&copy; 2025 Federico Ponzi. The opinions expressed here do not represent the views of my current or past employers.<p>
+    <p>&copy; 2025 Federico Ponzi. The opinions expressed here do not represent the views of my current or past employers.</p>
     <p>This website was generated with <a href="https://github.com/FedericoPonzi/genereto">Genereto</a>.</p>
 </footer>
 

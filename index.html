@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$GENERETO['title']</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
-          rel="stylesheet">
     <link rel="stylesheet" href="res/prism.css">
     <link rel="stylesheet" href="res/styles.css">
-    <meta name="description"
-          content="$GENERETO['description']">
-    <meta name="keywords"
-          content="$GENERETO['keywords']">
+    <meta name="description" content="$GENERETO['description']">
+    <meta name="keywords" content="$GENERETO['keywords']">
     <meta name="author" content="Federico Ponzi">
     <meta name="robots" content="index, follow">
 
     <meta property="og:title" content="$GENERETO['title']">
-    <meta property="og:description"
-          content="$GENERETO['description']">
+    <meta property="og:description" content="$GENERETO['description']">
     <meta property="og:url" content="$GENERETO['url']">
     <meta property="og:image" content="$GENERETO['cover_image']">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:creator" content="@federico_ponzi">
     <meta property="twitter:title" content="$GENERETO['title']">
-    <meta property="twitter:description"
-          content="$GENERETO['description']">
+    <meta property="twitter:description" content="$GENERETO['description']">
     <meta property="twitter:image" content="$GENERETO['cover_image']">
 
     <style>
@@ -38,7 +30,7 @@
             pointer-events: none;
             z-index: 0;
         }
-        
+
         .starwars {
             position: fixed;
             top: 0;
@@ -50,7 +42,7 @@
             display: none;
             overflow: hidden;
         }
-        
+
         .starwars-text {
             position: absolute;
             top: 100%;
@@ -59,13 +51,13 @@
             width: 80%;
             max-width: 600px;
             color: #ffd700;
-            font-family: 'Nunito', sans-serif;
+            font-family: Verdana, sans-serif;
             font-size: 24px;
             line-height: 1.6;
             text-align: center;
             animation: starwars-scroll 20s linear forwards;
         }
-        
+
         @keyframes starwars-scroll {
             0% {
                 top: 100%;
@@ -81,19 +73,113 @@
 </head>
 <body>
 <div class="navbar">
-    <h1 class="navbar-title">Welcome!</h1>
+    <h1 class="navbar-title">Federico Ponzi</h1>
     <canvas id="matrix"></canvas>
     <div class="navbar-links">
         <a href="https://fponzi.me/">Home</a>
         <a href="https://blog.fponzi.me/">Blog</a>
     </div>
 </div>
-<div class="container">
-    <article>
-        <!-- start_content -->
-        Hello world! This will be hidden in the result!
-        <!-- end_content -->
-    </article>
+
+<div class="page-wrapper">
+    <aside class="sidebar">
+        <div class="block">
+            <div class="block-title">Navigation</div>
+            <div class="block-content">
+                <a href="https://fponzi.me/">Home</a>
+                <a href="https://blog.fponzi.me/">Blog</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">/var</div>
+            <div class="block-content">
+                <a href="https://yes-we-kana.fponzi.me/">yes-we-kana: learn basic Japanese</a>
+                <a href="https://code-vibes.fponzi.me/">code-vibes</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Links</div>
+            <div class="block-content">
+                <a href="https://github.com/FedericoPonzi">GitHub</a>
+                <a href="https://twitter.com/federico_ponzi">Twitter</a>
+                <a href="https://www.linkedin.com/in/federicoponzi/">LinkedIn</a>
+                <a href="https://discuss.systems/@federicoponzi">Mastodon</a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="container">
+        <article>
+            <!-- start_content -->
+            Hello world! This will be hidden in the result!
+            <!-- end_content -->
+        </article>
+    </div>
+
+    <aside class="sidebar-right">
+        <div class="block">
+            <div class="block-title">Swag Store</div>
+            <div class="block-content">
+                <a href="https://swag.fponzi.me/">
+                    <img src="https://swag.fponzi.me/assets/rust-failure-is-not-an-option.png"
+                         alt="Rust: Failure is not an Option"
+                         class="swag-image">
+                </a>
+                <a href="https://swag.fponzi.me/" class="swag-link">Check out some swag!</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Badges</div>
+            <div class="block-content">
+                <div class="badge-item">
+                    <a href="https://projecteuler.net/profile/federicoponzi">
+                        <img src="https://projecteuler.net/profile/federicoponzi.png"
+                             alt="Project Euler Profile">
+                    </a>
+                </div>
+                <div class="badge-item">
+                    <a href="https://www.mozilla.org/en-US/firefox/">
+                        <img src="res/badges/fftake.gif"
+                             alt="Firefox - Take back the web">
+                    </a>
+                </div>
+                <div class="badge-item">
+                    <a href="https://www.kernel.org/">
+                        <img src="res/badges/linux-p.gif"
+                             alt="Linux Powered">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Visitors</div>
+            <div class="block-content">
+                <div class="stats-item">
+                    <span class="stats-label">Today:</span>
+                    <span class="stats-value">1,337</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">This Week:</span>
+                    <span class="stats-value">8,675</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">This Month:</span>
+                    <span class="stats-value">42,069</span>
+                </div>
+                <div class="stats-item">
+                    <span class="stats-label">Total:</span>
+                    <span class="stats-value">1,234,567</span>
+                </div>
+                <div class="stats-notice">
+                    (this is all fake, I don't track visitors :)
+                </div>
+            </div>
+        </div>
+    </aside>
 </div>
 
 <footer class="footer">
